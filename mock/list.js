@@ -21,7 +21,7 @@ const data = Mock.mock({
     school_id: '@id',
     school_name: '希望小学',
     school_address: '新希望大厦',
-    school_phone: '15823566422'
+    school_phone: '158XXXX6422'
   }]
 })
 
