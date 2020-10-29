@@ -2,6 +2,11 @@ import Mock from 'mockjs'
 
 const data = Mock.mock({
   'items|10': [{
+    // 音频
+    // id: '@id',
+    // 'subJobName|+1': 1,
+    // inputUrl: 'https://mindflowai-open.oss-cn-hangzhou.aliyuncs.com/505/6mariyokwzjuqjql.wav',
+
     //   User
     admin_id: '@id',
     admin_phone: '158XXXX6422',

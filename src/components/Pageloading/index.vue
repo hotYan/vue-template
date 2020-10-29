@@ -1,11 +1,10 @@
-// 列表，分页
 <template>
   <div>
-    <div class="tableData">
+    <div>
       <slot name="table" />
     </div>
     <div class="pageination-box">
-      <el-pagination class="pageination-class" background layout="total,prev, pager, next,jumper" :total="total" :current-page="pageNum" @current-change="currentChange" />
+      <el-pagination class="pageination-class" background layout="total, prev, pager, next" :total="total" :page-size="pageSize" :current-page="pageNum" @current-change="currentChange" />
     </div>
   </div>
 </template>
@@ -15,12 +14,23 @@ export default {
   props: {
     total: {
       type: Number,
-      default: 10
+      default: null
     },
     pageNum: {
       type: Number,
-      default: 1
+      default: null
+    },
+    pageSize: {
+      type: Number,
+      default: null
     }
+  },
+  watch: {
+    pageNum(val) {
+      // console.log(val)
+    }
+  },
+  mounted() {
   },
   methods: {
     currentChange(page) {
@@ -35,6 +45,7 @@ export default {
 .pageination-box {
     margin-top: 20px;
     overflow: hidden;
+
   .pageination-class {
     float: right;
   }

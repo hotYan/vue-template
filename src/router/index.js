@@ -73,6 +73,7 @@ export const constantRoutes = [
       }
     ]
   },
+
   // 个人资料
   {
     path: '/personal',
@@ -93,6 +94,22 @@ export const constantRoutes = [
         component: () => import('@/views/admin/Personal/password'),
         name: 'Password',
         meta: { title: '修改密码', activeMenu: '/personal' }
+      }
+    ]
+  },
+  // 音频
+  {
+    path: '/audio',
+    component: Layout,
+    redirect: '/audio/index',
+    // name: '可视化音频',
+    // meta: { title: '可视化音频', icon: 'studentCard' },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/admin/Audio/test/index.vue'),
+        name: 'AudioIndex',
+        meta: { title: '可视化音频', icon: 'studentCard' }
       }
     ]
   },
