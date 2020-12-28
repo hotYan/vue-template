@@ -1,8 +1,11 @@
 <template>
   <div class="dashboard-container">
-    <zyAudio
+    <!-- <zyAudio
       v-for="(item,index) in arrs"
       :key="index"
+      :url="item.url"
+    /> -->
+    <zyAudio
       :url="item.url"
     />
   </div>

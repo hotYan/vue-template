@@ -102,12 +102,10 @@ export const constantRoutes = [
     path: '/audio',
     component: Layout,
     redirect: '/audio/index',
-    // name: '可视化音频',
-    // meta: { title: '可视化音频', icon: 'studentCard' },
     children: [
       {
         path: 'index',
-        component: () => import('@/views/admin/Audio/test/index.vue'),
+        component: () => import('@/components/ZyAudio/index.vue'),
         name: 'AudioIndex',
         meta: { title: '可视化音频', icon: 'studentCard' }
       }
