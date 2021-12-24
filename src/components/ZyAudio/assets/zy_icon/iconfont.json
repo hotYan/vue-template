@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "17665456",
+      "name": "采样数据-频谱图",
+      "font_class": "pinputu",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
       "icon_id": "15325903",
       "name": "暂停 停止",
       "font_class": "pause",

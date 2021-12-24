@@ -111,6 +111,20 @@ export const constantRoutes = [
       }
     ]
   },
+  // 音频
+  {
+    path: '/input',
+    component: Layout,
+    redirect: '/input/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/components/Map/index.vue'),
+        name: 'InputTest',
+        meta: { title: '地图', icon: 'studentCard' }
+      }
+    ]
+  },
 
   /** when your routing map is too long, you can split it into small modules**/
   /** 当您的路由图太长时，您可以将其拆分为小模块**/
