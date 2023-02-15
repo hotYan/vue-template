@@ -10,7 +10,8 @@
 
 <script>
 import { editor as MonacoEditor } from 'monaco-editor'// import * as monaco from 'monaco-editor'
-import { defaultOpts, handleInputCode, formatDocument } from '../utils'
+import { defaultOpts, handleInputCode, formatDocument, registerDatavDarkTheme } from '../utils'
+const DEFAULT_THEME_NAME = 'datav-dark-theme'
 export default {
   components: { },
   props: {
@@ -67,13 +68,15 @@ export default {
   },
   methods: {
     init() {
+      registerDatavDarkTheme(MonacoEditor)
       const dom = this.$refs.MonacoEditorRef
       if (dom) {
         // 生成编辑器配置
         const opts = Object.assign(defaultOpts, {
           value: '',
           language: this.language,
-          readOnly: this.readOnly
+          readOnly: this.readOnly,
+          theme: DEFAULT_THEME_NAME
         })
         const ce = MonacoEditor.create(dom, opts) // 生成编辑器对象
         const inputCode = handleInputCode(this.language, this.code) // 根据不同语言，处理编辑器的值

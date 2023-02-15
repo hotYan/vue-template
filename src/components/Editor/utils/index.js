@@ -64,6 +64,25 @@ export const defaultOpts = {
   scrollBeyondLastColumn: 2
 }
 
+export const registerDatavDarkTheme = (editor) => {
+  const themeName = 'datav-dark-theme'
+  editor.defineTheme(themeName, {
+    base: 'vs-dark',
+    inherit: true,
+    rules: [
+      { token: 'key', foreground: 'dddddd' },
+      { token: 'string.key.json', foreground: 'dddddd' },
+      { token: 'string.value.json', foreground: 'b4e98c' }
+    ],
+    colors: {
+      'editor.background': '#0e1013',
+      'editor.lineHighlightBackground': '#1f2329',
+      'editorLineNumber.foreground': '#576369',
+      'editorCursor.foreground': '#2483ff'
+    }
+  })
+  return themeName
+}
 /** 复制编辑器文本
  * @param {String|Object|Array} code 编辑器文本
  * @returns {Boolean} 是否成功

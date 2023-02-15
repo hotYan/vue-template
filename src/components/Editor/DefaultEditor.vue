@@ -19,7 +19,7 @@
       :language="language"
       :height="500"
       :code="code"
-      :read-only="true"
+      :read-only="readOnly"
       @sure="closeFullScreen"
     />
   </div>
