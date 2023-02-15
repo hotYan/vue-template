@@ -12,12 +12,14 @@
       :language="language"
       :height="height"
       :code="code"
+      :read-only="readOnly"
     />
     <FullScreenEditor
       ref="FullScreenEditorRef"
       :language="language"
       :height="500"
       :code="code"
+      :read-only="true"
       @sure="closeFullScreen"
     />
   </div>
@@ -33,6 +35,10 @@ export default {
     language: {// 语言，默认JSON
       type: String,
       default: 'json'
+    },
+    readOnly: {// 是否只读,默认可编辑
+      type: Boolean,
+      default: false
     },
     code: { // 编辑器内容
       type: [String, Array, Object],
