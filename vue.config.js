@@ -1,4 +1,5 @@
 'use strict'
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
 
@@ -59,7 +60,8 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
-    }
+    },
+    plugins: [new MonacoWebpackPlugin()]
   },
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test

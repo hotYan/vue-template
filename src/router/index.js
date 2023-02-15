@@ -111,17 +111,31 @@ export const constantRoutes = [
       }
     ]
   },
-  // 音频
+  // 地图
   {
-    path: '/input',
+    path: '/map',
     component: Layout,
-    redirect: '/input/index',
+    redirect: '/map/index',
     children: [
       {
         path: 'index',
         component: () => import('@/components/Map/index.vue'),
-        name: 'InputTest',
+        name: 'MapTest',
         meta: { title: '地图', icon: 'studentCard' }
+      }
+    ]
+  },
+  // 代码编辑器
+  {
+    path: '/editor',
+    component: Layout,
+    redirect: '/editor/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/components/Editor/index.vue'),
+        name: 'EditorTest',
+        meta: { title: '编辑器', icon: 'studentCard' }
       }
     ]
   },
