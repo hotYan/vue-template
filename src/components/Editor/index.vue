@@ -1,6 +1,6 @@
 <template>
   <div class="">编辑器
-    <zyManacoEditor
+    <DefaultEditor
       language="json"
       :height="200"
       :code="value"
@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import zyManacoEditor from './Editor.vue'
+import DefaultEditor from './DefaultEditor.vue'
 export default {
   name: 'EditorTest',
-  components: { zyManacoEditor },
+  components: { DefaultEditor },
   props: {
   },
   data() {
