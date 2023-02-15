@@ -1,11 +1,21 @@
 <template>
-  <div class="datav-editor">
+  <div
+    class="datav-editor"
+    :style="{
+      height: height + 'px'
+    }"
+  >
+    <div class="datav-editor-actions">
+      <i class="el-icon-document-copy" @click="copyData" />
+      <i class="el-icon-full-screen" />
+    </div>
     <div
-      ref="MonacoEditor"
+      ref="MonacoEditorRef"
       class="monaco-editor"
       :style="{
-        height: height + 'px',
-        width: '90%'
+        // height: height + 'px',
+        height: '100%',
+        width: '100%'
       }"
     />
   </div>
@@ -13,8 +23,8 @@
 
 <script>
 // import * as monaco from 'monaco-editor'
-import * as monaco from 'monaco-editor'
-import { defaultOpts, handleInputCode, formatDocument } from '@/utils/zyeditor.js'
+import { editor as MonacoEditor } from 'monaco-editor'
+import { defaultOpts, handleInputCode, formatDocument, copyText } from '@/utils/zyeditor.js'
 export default {
   components: {},
   props: {
@@ -94,40 +104,30 @@ export default {
   },
   methods: {
     init() {
-      const dom = this.$refs.MonacoEditor
+      const dom = this.$refs.MonacoEditorRef
       if (dom) {
-        // 初始化container的内容，销毁之前生成的编辑器
-        // this.$refs.MonacoEditor.innerHTML = ''
-
         // 生成编辑器配置
         const opts = Object.assign(defaultOpts, {
           value: '',
           language: this.language,
           readOnly: this.readOnly
         })
-        // 生成编辑器对象
-        const ce = monaco.editor.create(dom, opts)
-        const inputCode = handleInputCode(this.language, this.code)
-        ce.setValue(inputCode)
-        if (this.autoFormat) {
+        const ce = MonacoEditor.create(dom, opts) // 生成编辑器对象
+        const inputCode = handleInputCode(this.language, this.code) // 根据不同语言，处理编辑器的值
+        ce.setValue(inputCode)// 设置编辑器的值
+        if (this.autoFormat) { // 根据不同语言，格式化编辑器的值
           formatDocument(ce, this.language)
         }
-        // if (this.height > 0) {
-        //   console.log('height', this.height)
-        //   console.log('dom', dom)
-        //   dom.style.height = `${this.height}px`
-        // }
-
-        // 编辑器内容发生改变时触发
-        // this.monacoEditor.onDidChangeModelContent(() => {
-        //   this.$emit('change', this.monacoEditor.getValue())
-        // })
         this.monacoEditor = ce
       }
     },
-    // 手动编辑器中的内容
-    getValue() {
-      this.$message.info(this.$refs.monaco.getVal())
+    copyData() {
+      const editor = this.monacoEditor
+      if (editor) {
+        copyText(editor.getValue()).then(() => {
+          this.$message.success('复制成功')
+        })
+      }
     }
   }
 
@@ -139,5 +139,21 @@ export default {
   height: 500px;
   width: 500px;
   background-color: aquamarine;
+  position: relative;
+  .datav-editor-actions{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    z-index: 999;
+    i{
+      color:#bfbfbf;
+    }
+    i:hover{
+      color:#409EFF;
+    }
+    i+i{
+      margin-left: 5px;
+    }
+  }
 }
 </style>
