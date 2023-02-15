@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { debounce } from 'lodash-es'
 import { editor as MonacoEditor } from 'monaco-editor'// import * as monaco from 'monaco-editor'
 import { defaultOpts, handleInputCode, formatDocument, registerDatavDarkTheme } from '../utils'
 const DEFAULT_THEME_NAME = 'datav-dark-theme'
@@ -78,13 +79,37 @@ export default {
           readOnly: this.readOnly,
           theme: DEFAULT_THEME_NAME
         })
-        const ce = MonacoEditor.create(dom, opts) // 生成编辑器对象
+        const ce = MonacoEditor.create(dom, opts) // 生成编辑器对象实例
+
         const inputCode = handleInputCode(this.language, this.code) // 根据不同语言，处理编辑器的值
         ce.setValue(inputCode)// 设置编辑器的值
         if (this.autoFormat) { // 根据不同语言，格式化编辑器的值
           formatDocument(ce, this.language)
         }
+
+        ce.onDidChangeModelContent(() => this.debounceChangeHandler(ce)) // 内容改变事件
+        ce.onDidBlurEditorText(() => this.blurHandler(ce))// 失去焦点事件
+
         this.monacoEditor = ce
+      }
+    },
+    // 内容改变时
+    debounceChangeHandler(editor) {
+      return debounce(() => {
+        // const editor = this.monacoEditor
+        if (editor) {
+          this.$emit('change', editor.getValue())
+        }
+      }, 300)
+    },
+    // 失去焦点时
+    blurHandler(editor) {
+      // const editor = this.monacoEditor
+      if (editor) {
+        this.$emit('blur', editor.getValue())
+        if (this.autoFormat) { // 根据不同语言，格式化编辑器的值
+          formatDocument(editor, this.language)
+        }
       }
     }
   }
