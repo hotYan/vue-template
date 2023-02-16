@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import './assets/font_editor/iconfont.css'
 import { copyText } from './utils'
 import GMonacoEditor from './components/MonacoEditor.vue'
 import FullScreenEditor from './FullScreenEditor.vue'
