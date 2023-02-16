@@ -2,6 +2,8 @@
   <el-dialog
     :title="`全屏模式${readOnly?'(只读)':''}`"
     :visible.sync="dialogVisible"
+    :before-close="cancle"
+    :close-on-click-modal="false"
     width="60%"
   >
     <g-monaco-editor
@@ -53,6 +55,7 @@ export default {
   mounted() {},
   methods: {
     cancle() {
+      this.$emit('close')
       this.dialogVisible = false
     },
     sure() {

@@ -1,0 +1,23 @@
+{
+  "id": "3898089",
+  "name": "editor",
+  "font_family": "element-icons",
+  "css_prefix_text": "el-icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "22899511",
+      "name": "全屏缩小",
+      "font_class": "quanpingsuoxiao",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "25015239",
+      "name": "全屏1",
+      "font_class": "fullscreen1",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    }
+  ]
+}

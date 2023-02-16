@@ -5,7 +5,9 @@
   >
     <div class="datav-editor-actions">
       <i class="el-icon-document-copy" @click="copyData" />
-      <i class="el-icon-full-screen" @click="switchFullScreen" />
+      <i v-if="isFullScreen" class="el-icon-quanpingsuoxiao" />
+      <!-- <i v-else class="el-icon-fullscreen1" @click="switchFullScreen" /> -->
+      <i v-else class="el-icon-full-screen" @click="switchFullScreen" />
     </div>
     <g-monaco-editor
       ref="editorRef"
@@ -20,7 +22,8 @@
       :height="500"
       :code="code"
       :read-only="readOnly"
-      @sure="closeFullScreen"
+      @close="closeFullScreen"
+      @sure="saveFullScreen"
     />
   </div>
 </template>
@@ -50,7 +53,9 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      isFullScreen: false
+    }
   },
   methods: {
     copyData() {
@@ -63,13 +68,17 @@ export default {
     },
     switchFullScreen() {
       this.$refs['FullScreenEditorRef'].dialogVisible = true
+      this.isFullScreen = !this.isFullScreen
     },
-    closeFullScreen(value) {
+    saveFullScreen(value) {
       const editor = this.$refs['editorRef'].monacoEditor
       if (editor && !editor._configuration._rawOptions.readOnly) {
         editor.setValue(value)
         editor.focus()
       }
+    },
+    closeFullScreen() {
+      this.isFullScreen = !this.isFullScreen
     }
   }
 }
