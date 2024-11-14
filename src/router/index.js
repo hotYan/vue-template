@@ -124,6 +124,18 @@ export const constantRoutes = [
         meta: { title: '地图', icon: 'studentCard' }
       }
     ]
+  }, {
+    path: '/topo',
+    component: Layout,
+    redirect: '/topo/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/components/Topo/index.vue'),
+        name: 'TopoTest',
+        meta: { title: '拓扑图', icon: 'studentCard' }
+      }
+    ]
   },
 
   /** when your routing map is too long, you can split it into small modules**/
