@@ -25,7 +25,7 @@ export default {
     // Create the input graph
     var g = new dagreD3.graphlib.Graph()
       .setGraph({ rankDir: 'TB' })
-      .setDefaultEdgeLabel(function () { return {} })
+      .setDefaultEdgeLabel(() => { return {} })
 
     // Here we're setting nodeclass, which is used by our custom drawNodes function
     // below.
@@ -45,7 +45,7 @@ export default {
     g.setNode(13, { label: '.', class: 'type-.' })
     g.setNode(14, { label: 'sentence', class: 'type-TK' })
 
-    g.nodes().forEach(function (v) {
+    g.nodes().forEach((v) => {
       var node = g.node(v)
       // Round the corners of the nodes
       node.rx = node.ry = 5
