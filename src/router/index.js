@@ -131,9 +131,31 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/components/Topo/index.vue'),
+        component: () => import('@/components/Topo/d3/index.vue'),
         name: 'TopoTest',
-        meta: { title: '拓扑图', icon: 'studentCard' }
+        meta: { title: 'd3拓扑图', icon: 'studentCard' }
+      }
+    ]
+  }, {
+    path: '/dagre-d3',
+    component: Layout,
+    redirect: '/dagre-d3/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/components/Topo/dagre-d3/TcpTooltip.vue'),
+        meta: { title: 'dagre-d3拓扑图', icon: 'studentCard' }
+      }
+    ]
+  }, {
+    path: '/d3-2',
+    component: Layout,
+    redirect: '/d3-2/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/components/Topo/d3_2/index.vue'),
+        meta: { title: 'd3-2拓扑图', icon: 'studentCard' }
       }
     ]
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="" style="border: 1px solid #ccc;margin:2px;">
-    <svg id="topo" class="dagre" width="1800" height="1000">
+    <svg id="topo" class="dagre" width="1200" height="1000">
       <!-- <g /> -->
     </svg>
     <!-- <div ref="tooltip" class="tipsy">
