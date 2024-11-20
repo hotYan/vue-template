@@ -1,7 +1,7 @@
 const options = {
   data: [
     {
-      type: 'app', // 节点类型
+      type: '4A', // 节点类型
       name: 'monitor-app', // 节点名称
       active: 9, // 已完成数
       total: 10, // 总数
@@ -11,7 +11,7 @@ const options = {
       isConfig: 'true' // 节点配置状态
     },
     {
-      type: 'app',
+      type: 'INNER',
       name: 'monitor-app2',
       active: 1,
       total: 10,
@@ -21,7 +21,7 @@ const options = {
       isConfig: 'true'
     },
     {
-      type: 'database',
+      type: '4A',
       name: 'Mysql',
       active: 3,
       total: 5,
@@ -31,7 +31,7 @@ const options = {
       isConfig: 'false'
     },
     {
-      type: 'cloud',
+      type: 'INNER',
       name: 'Redis',
       active: 3,
       total: 5,
@@ -41,7 +41,7 @@ const options = {
       isConfig: 'false'
     },
     {
-      type: 'earth',
+      type: '4A',
       name: 'ES',
       active: 3,
       total: 5,
@@ -52,7 +52,7 @@ const options = {
       isConfig: 'false'
     },
     {
-      type: 'earth',
+      type: 'INNER',
       name: 'Redis',
       active: 3,
       total: 5,
@@ -62,7 +62,7 @@ const options = {
       isConfig: 'true'
     },
     {
-      type: 'myapp',
+      type: '4A',
       name: 'AKA',
       active: 3,
       total: 5,
